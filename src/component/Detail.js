@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import styled from "styled-components";
 import { BsDash, BsPlusLg } from 'react-icons/bs'
@@ -71,8 +71,9 @@ const Price = styled.span`
 `
 const SelectNum = styled.div`
     position: absolute;
-    inset: auto auto 50px auto;
-    width: 100%;
+    inset: auto auto 50px 50%;
+    transform: translate(-50%,0);
+    width: calc(100% - 20px);
     display: flex;
     justify-content: space-between;
     margin: auto 0 0 0;
@@ -118,11 +119,39 @@ const BuyMenu = styled.div`
 `
 
 
-const Detail = ({ shop }) => {
-    const [num, setNum] = useState(0)
+const Detail = ({ shop, cart, setCart }) => {
+    const [num, setNum] = useState(1)
     const { id } = useParams();
     const itm = shop.find(it => String(it.id) === id);
-    console.log(itm)
+    const addCart = () => {
+        // 1. 같은id가 cart 배열에 있는지 확인한다.
+        // 2. 있다면 이미 있다는 알림 그게 아니면 cart배열에 새로운 아이템을 추가한다. (새 배열=[...cart, {추가할 아이템})] 
+        // 3. 스테이트 변경함수에 새 배열을 넣는다.
+        const match = cart.find(it => it.id == itm.id);
+        if (match) {
+            alert('이미 같은 상품이 있다.');
+
+        } else if (num < 1) {
+            alert('수량을 선택해주세요')
+        } else {
+            const cartItm = [
+                ...cart, {
+                    id: itm.id,
+                    name: itm.name,
+                    description: itm.description,
+                    price: itm.price,
+                    price_sign: itm.price_sign,
+                    api_featured_image: itm.api_featured_image,
+                    num: num,
+                }
+            ]
+            setCart(cartItm)
+        }
+    }
+    useEffect(() => {
+        console.log(cart)
+    }, [cart])
+
     return (
         <DetailItm>
             <Inner>
@@ -141,7 +170,7 @@ const Detail = ({ shop }) => {
                                 <Info>{itm.description &&
                                     itm.description
                                     || 'This product has no description.'}</Info>
-                                <Price>{itm.price > 0 ? itm.price : 'Sold out'}{itm.price > 0 ? itm.price_sign : ''}</Price>
+                                <Price>{itm.price > 0 ? itm.price : 'SoldOut'}{itm.price > 0 ? itm.price_sign : ''}</Price>
                                 <SelectNum>
                                     <ItmNum>
                                         <Delete onClick={() => { num > 0 ? setNum(num - 1) : setNum(num) }}><BsDash /></Delete>
@@ -153,7 +182,7 @@ const Detail = ({ shop }) => {
 
                                             itm.price > 0 ?
                                                 <TotalPrice>Total | {itm.price * num} {itm.price_sign}</TotalPrice>
-                                                : <TotalPrice>Sold out</TotalPrice>
+                                                : <TotalPrice>SoldOut</TotalPrice>
                                         }
                                     </TotalPriceInner>
 
@@ -161,7 +190,7 @@ const Detail = ({ shop }) => {
                             </Desc>
                         </Itm>
                         <BuyMenu>
-
+                            <button onClick={addCart}>addcart</button>
                         </BuyMenu>
                     </ItmInner>
 

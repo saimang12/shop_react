@@ -1,8 +1,24 @@
-import React from 'react'
+import React, { useState } from 'react'
 
-const Cart = () => {
+const Cart = ({ cart }) => {
+    const addItm = () => {
+        alert('추가')
+
+    }
+    const [itmNum, setItmNum] = useState()
     return (
-        <div>Cart</div>
+        <div>
+            {
+                cart &&
+                cart.map((it, idx) => {
+                    return (
+                        <li key={it.id}>{it.id}{it.name}{it.num}
+
+                        </li>
+                    )
+                })
+            }
+        </div>
     )
 }
 

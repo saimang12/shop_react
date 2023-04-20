@@ -12,6 +12,7 @@ const App = () => {
     const url = 'https://desipossa.github.io/shop_cra/assets/data.json';
 
     const [shop, setShop] = useState([]);
+    const [cart, setCart] = useState([])
 
     const getData = async () => {
         const r = await axios.get(url);
@@ -33,8 +34,8 @@ const App = () => {
                 <Route path={`/`} element={<Layout cateList={cateList} />} >
                     <Route path={`/`} element={<Main shop={shop} />} />
                     <Route path={`/:cate`} element={<CateList shop={shop} cateList={cateList} />} />
-                    <Route path={`/detali/:id`} element={<Detail shop={shop} />} />
-                    <Route path={`/cart`} element={<Cart />} />
+                    <Route path={`/detali/:id`} element={<Detail shop={shop} cart={cart} setCart={setCart} />} />
+                    <Route path={`/cart`} element={<Cart cart={cart} setCart={setCart} />} />
                 </Route>
 
             </Routes>

@@ -24,7 +24,7 @@ const AllList = ({ shop }) => {
                     {
                         pageNum.map((it, idx) => {
                             return (
-                                <button onClick={() => { setListNum(idx * 10) }} className='page'>{idx + 1}</button>
+                                <button onClick={() => { setListNum(idx * 10) }} className='page' key={idx}>{idx + 1}</button>
                             )
                         }).slice(page, page + pageLimit)
                     }
