@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import Nav from "./Nav";
+import { BsFillCartFill } from 'react-icons/bs';
 
 const Header = ({ cateList }) => {
     return (
@@ -12,7 +13,9 @@ const Header = ({ cateList }) => {
                 </h1>
                 <Nav cateList={cateList} />
                 <div className="cart">
-                    cart
+                    <Link to={`/cart`}>
+                        <BsFillCartFill />
+                    </Link>
                 </div>
             </div>
         </header>

@@ -32,6 +32,7 @@ const AllList = ({ shop }) => {
                         page < parseInt(shopLength / itmLimit) - pageLimit &&
                         <button onClick={() => { setPage(page + pageLimit) }} className='next'><BsChevronDoubleRight /></button>
                     }
+
                 </div>
                 <ul>
                     {
@@ -43,8 +44,6 @@ const AllList = ({ shop }) => {
                                             <img src={it.api_featured_image} alt={it.name} />
                                         </figure>
                                     </Link>
-
-
                                     <div className="desc">
                                         <h3>{it.name}</h3>
                                         <p>

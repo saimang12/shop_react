@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import CateList from "./component/CateList";
 import Detail from "./component/Detail";
+import Cart from "./component/Cart";
 
 const App = () => {
 
@@ -33,6 +34,7 @@ const App = () => {
                     <Route path={`/`} element={<Main shop={shop} />} />
                     <Route path={`/:cate`} element={<CateList shop={shop} cateList={cateList} />} />
                     <Route path={`/detali/:id`} element={<Detail shop={shop} />} />
+                    <Route path={`/cart`} element={<Cart />} />
                 </Route>
 
             </Routes>

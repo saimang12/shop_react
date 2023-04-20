@@ -2,6 +2,7 @@ import React, { useRef } from 'react';
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import { BsArrowLeftShort, BsArrowRightShort } from "react-icons/bs";
+import { Link } from 'react-router-dom';
 
 const MainSlide = ({ shop }) => {
     const s = useRef(null);
@@ -19,7 +20,7 @@ const MainSlide = ({ shop }) => {
         <div className="MainSlide">
             <div className="inner">
                 <div className="title">
-                    <h2>추천 인기상품</h2>
+                    <h2>Main Product</h2>
                 </div>
                 <Slider {...mainSlideOption} ref={s} className='slider'>
                     {
@@ -27,9 +28,11 @@ const MainSlide = ({ shop }) => {
                         shop.map((it, idx) => {
                             return (
                                 <div key={it.id} className={`itm itm0${idx + 1}`}>
-                                    <figure>
-                                        <img src={it.api_featured_image} alt={it.name} />
-                                    </figure>
+                                    <Link to={`/detali/${it.id}`}>
+                                        <figure>
+                                            <img src={it.api_featured_image} alt={it.name} />
+                                        </figure>
+                                    </Link>
                                     <div className="desc">
                                         <h3>{it.name}</h3>
                                         <p>
