@@ -1,25 +1,45 @@
-import logo from './logo.svg';
-import './App.css';
+import { Route, Routes } from "react-router-dom";
+import Layout from "./Layout";
+import Main from "./component/Main";
+import { useEffect, useState } from "react";
+import axios from "axios";
+import CateList from "./component/CateList";
+import Detail from "./component/Detail";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+const App = () => {
+
+    const url = 'https://desipossa.github.io/shop_cra/assets/data.json';
+
+    const [shop, setShop] = useState([]);
+
+    const getData = async () => {
+        const r = await axios.get(url);
+        setShop(r.data);
+    }
+
+    useEffect(() => {
+        getData()
+    }, [])
+
+    const cateAll = shop.map(it => it.category);
+    const filterItm = cateAll.filter(Boolean);
+    const cateList = [...new Set(filterItm)]
+
+
+    return (
+        <>
+            <Routes>
+                <Route path={`/`} element={<Layout cateList={cateList} />} >
+                    <Route path={`/`} element={<Main shop={shop} />} />
+                    <Route path={`/:cate`} element={<CateList shop={shop} cateList={cateList} />} />
+                    <Route path={`/detali/:id`} element={<Detail shop={shop} />} />
+                </Route>
+
+            </Routes>
+
+        </>
+
+    )
 }
 
 export default App;

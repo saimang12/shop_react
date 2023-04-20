@@ -1,0 +1,235 @@
+@import url(./common.css);
+@import url(./font.css);
+
+@mixin MainTitle {
+    position: relative;
+    font-size: 30px;
+    font-weight: 700;
+    text-align: center;
+    margin: 0 0 60px 0;
+}
+
+@mixin MainTitle_before {
+    content: "";
+    position: absolute;
+    inset: auto auto -30px 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 1px;
+    background: #555;
+}
+
+@mixin Inner {
+    width: 1200px;
+    margin: 0 auto;
+}
+
+
+.header {
+    line-height: 80px;
+    border-bottom: 1px solid #ddd;
+
+    .inner {
+        @include Inner;
+        display: flex;
+        justify-content: space-between;
+
+        .gnb {
+            ul {
+                display: flex;
+                gap: 20px;
+
+            }
+        }
+    }
+}
+
+main {
+    .MainSlide {
+        padding: 100px 0;
+        background: linear-gradient(rgb(255 255 255), #fff7f7);
+
+        .inner {
+            position: relative;
+            @include Inner;
+
+            .arrows {
+                position: absolute;
+                inset: 50% auto auto 50%;
+
+                font-size: 80px;
+                cursor: pointer;
+
+                .prev {
+                    position: absolute;
+                    transform: translate(-50%, -50%);
+                    margin: 0 0 0 -660px;
+                }
+
+                .next {
+                    position: absolute;
+                    transform: translate(-50%, -50%);
+                    margin: 0 0 0 660px;
+                }
+
+            }
+
+            .title {
+                @include MainTitle;
+
+                // &::before {
+                //     @include MainTitle_before;
+                // }
+            }
+
+            .slider {
+                margin: 0 -15px;
+
+                .itm {
+                    padding: 0 15px;
+                    margin: 0 0 40px 0;
+
+                    figure {
+                        img {
+                            width: 100%;
+                            height: 250px;
+                            object-fit: cover;
+                        }
+                    }
+
+                    .desc {
+                        padding: 20px 0;
+
+                        h3 {
+                            font-weight: 500;
+                            height: 60px;
+                            line-height: 1.1;
+                        }
+
+                        p {
+                            font-size: 15px;
+                            line-height: 1.2;
+                            height: 70px;
+                        }
+
+                        span {
+                            font-size: 15px;
+                        }
+                    }
+                }
+
+                .slick-dots {
+                    text-align: center;
+
+                    li {
+                        display: inline-block;
+                        margin: 0 2px;
+
+                        button {
+                            font-size: 0;
+                            width: 20px;
+                            height: 20px;
+                            border: none;
+                            border-radius: 50%;
+                            background: #ddd;
+                            cursor: pointer;
+                        }
+                    }
+
+                    li.slick-active {
+                        button {
+                            background: tomato;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .AllList {
+        padding: 100px 0;
+
+        .inner {
+            @include Inner;
+
+            .title {
+                @include MainTitle;
+            }
+
+            .page_num {
+                display: flex;
+                justify-content: center;
+                margin: 0 0 40px 0;
+
+
+
+                button {
+                    width: 40px;
+                    height: 25px;
+                    border: none;
+                    background: #fff6f6;
+                    border-radius: 0;
+                    cursor: pointer;
+                }
+
+                .page {
+                    margin: 0 1px;
+
+                }
+
+                .prev,
+                .next {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    margin: 0 1px;
+                }
+            }
+
+            ul {
+                display: grid;
+                grid-template-columns: repeat(5, 1fr);
+                gap: 30px;
+
+                li {
+                    figure {
+                        img {
+                            width: 100%;
+                            height: 230px;
+                            object-fit: cover;
+                        }
+                    }
+
+                    .desc {
+                        padding: 20px 0;
+
+                        h3 {
+                            font-weight: 500;
+                            height: 60px;
+                            line-height: 1.1;
+                        }
+
+                        p {
+                            font-size: 15px;
+                            line-height: 1.2;
+                            height: 70px;
+                        }
+
+                        span {
+                            font-size: 15px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+
+.footer {
+    padding: 40px 0 60px 0;
+    color: #fff;
+    background: #333;
+    text-align: center;
+}
