@@ -5,7 +5,7 @@ const CateList = ({ shop, cateList }) => {
     const { cate } = useParams();
     const cateItm = shop.filter(it => it.category === cate)
     return (
-        <div className="cateList">
+        <section className="cateList">
 
             <ul>
                 {
@@ -20,7 +20,7 @@ const CateList = ({ shop, cateList }) => {
                     })
                 }
             </ul>
-        </div>
+        </section>
     )
 }
 

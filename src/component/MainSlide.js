@@ -1,7 +1,7 @@
 import React, { useRef } from 'react';
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
-import { BsArrowLeftShort, BsArrowRightShort } from "react-icons/bs";
+import { BsChevronLeft, BsChevronRight } from "react-icons/bs";
 import { Link } from 'react-router-dom';
 
 const MainSlide = ({ shop }) => {
@@ -17,7 +17,7 @@ const MainSlide = ({ shop }) => {
     const randomNum = Math.floor(Math.random() * 100 + 0);
 
     return (
-        <div className="MainSlide">
+        <section className="MainSlide">
             <div className="inner">
                 <div className="title">
                     <h2>Main Product</h2>
@@ -50,11 +50,11 @@ const MainSlide = ({ shop }) => {
                     }
                 </Slider>
                 <div className="arrows">
-                    <BsArrowLeftShort className='prev' onClick={() => { s.current.slickPrev() }} />
-                    <BsArrowRightShort className='next' onClick={() => { s.current.slickNext() }} />
+                    <BsChevronLeft className='prev' onClick={() => { s.current.slickPrev() }} />
+                    <BsChevronRight className='next' onClick={() => { s.current.slickNext() }} />
                 </div>
             </div>
-        </div>
+        </section>
     )
 }
 

@@ -1,9 +1,9 @@
-import { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
-import styled from "styled-components";
+import { useEffect, useRef, useState } from "react";
+import { Link, useNavigate, useParams } from "react-router-dom";
+import styled, { keyframes } from "styled-components";
 import { BsDash, BsPlusLg } from 'react-icons/bs'
 
-const DetailItm = styled.div`
+const DetailItm = styled.section`
     padding: 100px 0;
 `
 const Inner = styled.div`
@@ -115,6 +115,9 @@ const TotalPrice = styled.span`
 const BuyMenu = styled.div`
 
 `
+const AddButton = styled.button`
+
+`
 
 
 const Detail = ({ shop, cart, setCart, num, setNum }) => {
@@ -128,7 +131,6 @@ const Detail = ({ shop, cart, setCart, num, setNum }) => {
         const match = cart.find(it => it.id == itm.id);
         if (match) {
             alert('이미 장바구니에 있습니다.');
-
         } else if (num < 1) {
             alert('수량을 선택해주세요');
         } else {
@@ -144,9 +146,9 @@ const Detail = ({ shop, cart, setCart, num, setNum }) => {
                 }
             ]
             setCart(cartItm)
+            alert('장바구니에 추가되었습니다.')
         }
     }
-
     useEffect(() => {
         setNum(1); // 페이지가 로드될 때마다 count 초기화
     }, []);
@@ -178,7 +180,6 @@ const Detail = ({ shop, cart, setCart, num, setNum }) => {
                                     </ItmNum>
                                     <TotalPriceInner>
                                         {
-
                                             itm.price > 0 ?
                                                 <TotalPrice>Total | {itm.price * num} {itm.price_sign}</TotalPrice>
                                                 : <TotalPrice>SoldOut</TotalPrice>
@@ -189,13 +190,10 @@ const Detail = ({ shop, cart, setCart, num, setNum }) => {
                             </Desc>
                         </Itm>
                         <BuyMenu>
-                            <button onClick={addCart}>addcart</button>
+                            <AddButton onClick={addCart}>장바구니에 추가</AddButton>
                         </BuyMenu>
                     </ItmInner>
-
                 }
-
-
             </Inner>
         </DetailItm >
     )

@@ -41,7 +41,6 @@ const App = () => {
                     <Route path={`/detali/:id`} element={<Detail shop={shop} cart={cart} setCart={setCart} num={num} setNum={setNum} />} />
                     <Route path={`/cart`} element={<Cart cart={cart} setCart={setCart} num={num} setNum={setNum} />} />
                 </Route>
-
             </Routes>
 
         </>

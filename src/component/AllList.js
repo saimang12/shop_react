@@ -11,7 +11,7 @@ const AllList = ({ shop }) => {
     const pageNum = Array.from({ length: parseInt(shopLength / itmLimit) + 1 })
 
     return (
-        <div className="AllList">
+        <section className="AllList">
             <div className="inner">
                 <div className="title">
                     <h2>All Product</h2>
@@ -63,7 +63,7 @@ const AllList = ({ shop }) => {
                 </ul>
 
             </div>
-        </div>
+        </section>
     )
 }
 

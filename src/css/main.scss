@@ -28,7 +28,9 @@
 .header {
     position: relative;
     line-height: 80px;
-    background: #f7f7f7;
+    min-width: 1200px;
+    background: #fff7f7;
+
 
     &::before {
         content: "";
@@ -37,7 +39,7 @@
         transform: translate(-50%, 0);
         width: 100%;
         height: 1px;
-        background: #444;
+        background: #ddd;
     }
 
     .inner {
@@ -79,6 +81,7 @@ main {
     .MainSlide {
         padding: 100px 0;
         background: linear-gradient(rgb(255 255 255), #fff7f7);
+        min-width: 1200px;
 
         .inner {
             position: relative;
@@ -86,21 +89,21 @@ main {
 
             .arrows {
                 position: absolute;
-                inset: 50% auto auto 50%;
+                inset: auto auto 0 50%;
+                font-size: 30px;
 
-                font-size: 80px;
                 cursor: pointer;
 
                 .prev {
                     position: absolute;
-                    transform: translate(-50%, -50%);
-                    margin: 0 0 0 -660px;
+                    transform: translate(-50%, -100%);
+                    margin: 0 0 0 -150px;
                 }
 
                 .next {
                     position: absolute;
-                    transform: translate(-50%, -50%);
-                    margin: 0 0 0 660px;
+                    margin: 0 0 0 150px;
+                    transform: translate(-50%, -100%);
                 }
 
             }
@@ -151,6 +154,7 @@ main {
 
                 .slick-dots {
                     text-align: center;
+                    padding: 5px 0;
 
                     li {
                         display: inline-block;
@@ -262,5 +266,26 @@ main {
     padding: 40px 0 60px 0;
     color: #fff;
     background: #333;
+    min-width: 1200px;
     text-align: center;
+}
+
+.ToCart {
+    position: fixed;
+    inset: auto 50px 50px auto;
+    width: 50px;
+    height: 50px;
+    background: #6d51c3;
+    border-radius: 50%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    a {
+        display: block;
+        color: #fff;
+        font-size: 20px;
+        padding: 15px;
+    }
 }

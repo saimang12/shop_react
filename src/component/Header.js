@@ -1,9 +1,11 @@
 import { Link, useNavigate } from "react-router-dom";
 import Nav from "./Nav";
 import { BsFillCartFill } from 'react-icons/bs';
-import { useState } from "react";
+import { useRef, useState } from "react";
+import { BsSearch } from 'react-icons/bs';
 
 const Header = ({ cateList, shop, setSearch }) => {
+    const text = useRef(null)
     const [input, setInput] = useState('')
     const navigate = useNavigate();
     const r = shop.filter(it => it.name.includes(input)
@@ -18,7 +20,7 @@ const Header = ({ cateList, shop, setSearch }) => {
         e.preventDefault();
         if (input.length < 2) {
             alert('두글자 이상 입력해주세요');
-
+            text.current.focus();
         } else {
             setSearch(r)
             navigate(`/search/${input}`)
@@ -37,8 +39,8 @@ const Header = ({ cateList, shop, setSearch }) => {
                     </h1>
                     <div className="search">
                         <form action="" onSubmit={searchHandler}>
-                            <input type="text" value={input} onChange={(e) => { setInput(e.target.value) }} />
-                            <button onClick={searchHandler}>검색</button>
+                            <input type="text" value={input} onChange={(e) => { setInput(e.target.value) }} ref={text} />
+                            <button onClick={searchHandler}><BsSearch /></button>
                         </form>
                     </div>
                     <div className="cart">
