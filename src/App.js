@@ -10,7 +10,7 @@ import Cart from "./component/Cart";
 const App = () => {
 
     const url = 'https://desipossa.github.io/shop_cra/assets/data.json';
-
+    const [num, setNum] = useState(1)
     const [shop, setShop] = useState([]);
     const [cart, setCart] = useState([])
 
@@ -21,7 +21,7 @@ const App = () => {
 
     useEffect(() => {
         getData()
-    }, [])
+    }, []);
 
     const cateAll = shop.map(it => it.category);
     const filterItm = cateAll.filter(Boolean);
@@ -34,8 +34,8 @@ const App = () => {
                 <Route path={`/`} element={<Layout cateList={cateList} />} >
                     <Route path={`/`} element={<Main shop={shop} />} />
                     <Route path={`/:cate`} element={<CateList shop={shop} cateList={cateList} />} />
-                    <Route path={`/detali/:id`} element={<Detail shop={shop} cart={cart} setCart={setCart} />} />
-                    <Route path={`/cart`} element={<Cart cart={cart} setCart={setCart} />} />
+                    <Route path={`/detali/:id`} element={<Detail shop={shop} cart={cart} setCart={setCart} num={num} setNum={setNum} />} />
+                    <Route path={`/cart`} element={<Cart cart={cart} setCart={setCart} num={num} setNum={setNum} />} />
                 </Route>
 
             </Routes>

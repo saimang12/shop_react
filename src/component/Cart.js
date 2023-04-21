@@ -1,20 +1,23 @@
-import React, { useState } from 'react'
+const Cart = ({ cart, setCart }) => {
 
-const Cart = ({ cart }) => {
-    const addItm = () => {
-        alert('추가')
-
+    const addCart = (id) => {
+        // 카트에 담긴 물품 수량 조정
+        const newCart = cart.map(it => it.id === id ? { ...it, amount: it.amount + 1 } : it);
+        setCart(newCart);
     }
-    const [itmNum, setItmNum] = useState()
+
+
     return (
         <div>
             {
                 cart &&
                 cart.map((it, idx) => {
                     return (
-                        <li key={it.id}>{it.id}{it.name}{it.num}
+                        <>
+                            <li key={it.id}>{it.id}{it.name}{it.amount}</li>
+                            <button onClick={() => { addCart(it.id) }}>+</button>
+                        </>
 
-                        </li>
                     )
                 })
             }

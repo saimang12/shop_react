@@ -119,8 +119,8 @@ const BuyMenu = styled.div`
 `
 
 
-const Detail = ({ shop, cart, setCart }) => {
-    const [num, setNum] = useState(1)
+const Detail = ({ shop, cart, setCart, num, setNum }) => {
+
     const { id } = useParams();
     const itm = shop.find(it => String(it.id) === id);
     const addCart = () => {
@@ -142,7 +142,7 @@ const Detail = ({ shop, cart, setCart }) => {
                     price: itm.price,
                     price_sign: itm.price_sign,
                     api_featured_image: itm.api_featured_image,
-                    num: num,
+                    amount: num,
                 }
             ]
             setCart(cartItm)
