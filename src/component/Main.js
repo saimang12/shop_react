@@ -6,7 +6,7 @@ import AllList from './AllList';
 
 
 const Main = ({ shop }) => {
-    console.log(shop)
+
     return (
         <main>
             <MainSlide shop={shop} />

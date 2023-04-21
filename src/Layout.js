@@ -3,10 +3,10 @@ import Header from './component/Header'
 import { Outlet } from 'react-router-dom'
 import Footer from './component/Footer'
 
-const Layout = ({ cateList }) => {
+const Layout = ({ cateList, shop, setSearch }) => {
     return (
         <div className="Wrap">
-            <Header cateList={cateList} />
+            <Header cateList={cateList} shop={shop} setSearch={setSearch} />
             <Outlet />
             <Footer />
         </div>

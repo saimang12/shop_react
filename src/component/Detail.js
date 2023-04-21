@@ -85,8 +85,6 @@ const ItmNum = styled.div`
     border-radius: 15px;
     align-items: center;
     background: rgb(255 239 239);
-
-    
 `
 const Delete = styled.button`
     display: flex;
