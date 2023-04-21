@@ -129,10 +129,10 @@ const Detail = ({ shop, cart, setCart, num, setNum }) => {
         // 3. 스테이트 변경함수에 새 배열을 넣는다.
         const match = cart.find(it => it.id == itm.id);
         if (match) {
-            alert('이미 같은 상품이 있다.');
+            alert('이미 장바구니에 있습니다.');
 
         } else if (num < 1) {
-            alert('수량을 선택해주세요')
+            alert('수량을 선택해주세요');
         } else {
             const cartItm = [
                 ...cart, {
@@ -148,9 +148,10 @@ const Detail = ({ shop, cart, setCart, num, setNum }) => {
             setCart(cartItm)
         }
     }
+
     useEffect(() => {
-        console.log(cart)
-    }, [cart])
+        setNum(1); // 페이지가 로드될 때마다 count 초기화
+    }, []);
 
     return (
         <DetailItm>
