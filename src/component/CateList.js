@@ -3,7 +3,10 @@ import { Link, useParams } from 'react-router-dom'
 
 const CateList = ({ shop, cateList }) => {
     const { cate } = useParams();
-    const cateItm = shop.filter(it => it.category === cate)
+    const cateItm = shop.filter(it => it.category === cate);
+    const coverImg = (e) => {
+        e.target.src = process.env.PUBLIC_URL + '/img/cover.png'
+    }
     return (
         <section className="CateList">
             <div className="inner">
@@ -14,7 +17,7 @@ const CateList = ({ shop, cateList }) => {
                                 <li key={it.id}>
                                     <Link to={`/detali/${it.id}`}>
                                         <figure>
-                                            <img src={it.api_featured_image} alt={it.name} />
+                                            <img src={it.api_featured_image} alt={it.name} onError={coverImg} />
                                         </figure>
                                     </Link>
                                     <div className="desc">

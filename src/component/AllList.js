@@ -9,6 +9,9 @@ const AllList = ({ shop }) => {
     const pageLimit = 20;
     const shopLength = shop.length;
     const pageNum = Array.from({ length: parseInt(shopLength / itmLimit) + 1 })
+    const coverImg = (e) => {
+        e.target.src = process.env.PUBLIC_URL + '/img/cover.png'
+    }
 
     return (
         <section className="AllList">
@@ -41,7 +44,7 @@ const AllList = ({ shop }) => {
                                 <li key={it.id}>
                                     <Link to={`/detali/${it.id}`}>
                                         <figure>
-                                            <img src={it.api_featured_image} alt={it.name} />
+                                            <img src={it.api_featured_image} alt={it.name} onError={coverImg} />
                                         </figure>
                                     </Link>
                                     <div className="desc">

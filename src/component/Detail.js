@@ -124,6 +124,9 @@ const Detail = ({ shop, cart, setCart, num, setNum }) => {
 
     const { id } = useParams();
     const itm = shop.find(it => String(it.id) === id);
+    const coverImg = (e) => {
+        e.target.src = process.env.PUBLIC_URL + '/img/cover.png'
+    }
     const addCart = () => {
         // 1. 같은id가 cart 배열에 있는지 확인한다.
         // 2. 있다면 이미 있다는 알림 그게 아니면 cart배열에 새로운 아이템을 추가한다. (새 배열=[...cart, {추가할 아이템})] 
@@ -163,7 +166,7 @@ const Detail = ({ shop, cart, setCart, num, setNum }) => {
                     <ItmInner>
                         <Itm>
                             <Figure>
-                                <Img src={itm.api_featured_image} alt={itm.name} />
+                                <Img src={itm.api_featured_image} alt={itm.name} onError={coverImg} />
                             </Figure>
                             <Desc>
                                 <H3>{itm.name}</H3>
