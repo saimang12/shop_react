@@ -24,6 +24,7 @@ const ItmInner = styled.div`
 const Itm = styled.div`
     display: flex;
     gap: 30px;
+    margin: 0 0 20px 0;
 `
 const Figure = styled.figure`
     flex: 5;
@@ -113,10 +114,14 @@ const TotalPrice = styled.span`
     font-size: 15px;
 `
 const BuyMenu = styled.div`
-
+    text-align: right;
 `
 const AddButton = styled.button`
-
+    background: #000;
+    color: #fff;
+    font-size: 15px;
+    padding: 10px 20px;
+    cursor: pointer;
 `
 
 
@@ -190,7 +195,9 @@ const Detail = ({ shop, cart, setCart, num, setNum }) => {
                                     </TotalPriceInner>
 
                                 </SelectNum>
+
                             </Desc>
+
                         </Itm>
                         <BuyMenu>
                             <AddButton onClick={addCart}>장바구니에 추가</AddButton>
